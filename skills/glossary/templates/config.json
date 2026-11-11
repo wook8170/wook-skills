@@ -1,0 +1,75 @@
+{
+  "note": "용어 검사 범위 · 무시 목록. 정본 사전은 terms.yaml. 앞에 적은 source 가 먼저 분류한다. category: manual · ui · server · mcp · docs.",
+  "sources": [
+    {
+      "root": "src",
+      "category": "ui",
+      "exts": [
+        ".tsx",
+        ".ts",
+        ".vue",
+        ".jsx",
+        ".js"
+      ]
+    },
+    {
+      "root": "docs",
+      "category": "docs",
+      "exts": [
+        ".md"
+      ],
+      "exclude": [
+        "^docs/glossary/"
+      ]
+    },
+    {
+      "root": "README.md",
+      "category": "docs",
+      "exts": [
+        ".md"
+      ]
+    }
+  ],
+  "exclude": [
+    "\\.(test|spec)\\.[cm]?[jt]sx?$",
+    "(^|/)__tests__/",
+    "\\.generated\\.",
+    "\\.d\\.ts$",
+    "^docs/glossary/"
+  ],
+  "skipLinePatterns": {
+    "server": [
+      "\\b(log|logger|console)\\.(trace|debug|info|warn|error|log)\\("
+    ]
+  },
+  "blankPatterns": [
+    "\\bkeywords:\\s*\\[[^\\]]*\\]"
+  ],
+  "pairs": [],
+  "candidateCategories": [
+    "ui",
+    "manual"
+  ],
+  "ignore": [
+    "취소",
+    "삭제",
+    "추가",
+    "저장",
+    "이름",
+    "선택",
+    "전체",
+    "확인",
+    "닫기",
+    "열기",
+    "편집",
+    "수정",
+    "복사",
+    "검색",
+    "설정",
+    "다시",
+    "이전",
+    "다음",
+    "완료",
+    "적용"
+  ]
+}

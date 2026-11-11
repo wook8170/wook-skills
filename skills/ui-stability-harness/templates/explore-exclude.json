@@ -1,0 +1,11 @@
+{
+  "note": "클릭 탐색 제외 목록 — explore.ts 의 파괴 · 외부 동작 규칙(testid · 문구 · danger 변형)으로 못 거르는 것만 적는다. 사유 필수.",
+  "testid": [
+    { "pattern": "^(topbar-tour|tour-)", "why": "투어 — 화면 전체를 덮는 단계 진행(별도 사양 95 가 본다)" },
+    { "pattern": "assistant-send|agent-", "why": "어시스턴트 대화 · 에이전트 호출(외부 모델)" },
+    { "pattern": "^help-btn$", "why": "도움말 창 — 레지스트리 dock.help 가 깊게 본다(모든 화면에서 같은 창)" }
+  ],
+  "text": [
+    { "pattern": "^(로그인|Sign in)$", "why": "인증 요청" }
+  ]
+}

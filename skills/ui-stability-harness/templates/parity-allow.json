@@ -1,0 +1,1 @@
+{ "note": "I19 R↔V 차이 허용 목록 — screen · item 은 정규식, why 필수(사유 없는 등재는 pnpm uistab:coverage --check 가 거부).", "entries": [] }

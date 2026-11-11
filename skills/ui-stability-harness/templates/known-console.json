@@ -1,0 +1,6 @@
+{
+  "note": "I14 콘솔 · 예외 알려진 예외 — 늘리려면 사유(why)를 적는다. 정규식(pattern)은 콘솔 글자 전체에 맞춘다. docs/testing/ui-stability-harness.md §I14",
+  "entries": [
+    { "pattern": "Download the (React|Vue) DevTools", "why": "개발 도구 안내(오류 아님)" }
+  ]
+}

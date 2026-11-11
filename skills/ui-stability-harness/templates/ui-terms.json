@@ -1,0 +1,76 @@
+{
+  "note": "I25 용어 사전(예시) — 프로젝트의 확정 용어로 바꾼다. level: fail = 위반(래칫), warn = 경고. 확정 전 용어는 warn 으로 두고 확정되면 fail 로 올린다. 아래 규칙 · extractAsLoad 는 적용 사례의 예시다.",
+  "extractAsLoadLevel": "fail",
+  "extractAsLoadNote": "「적재」 뜻의 「추출」 — term-load-revert 레인(c73e3a3a6 · a51d20e36)이 통합에 병합돼 fail 로 올렸다. 되돌리려면 이 값을 \"warn\" 으로.",
+  "extractAllow": [
+    "스타일 추출",
+    "필드 추출",
+    "텍스트 추출",
+    "글자 추출",
+    "키워드 추출",
+    "이미지 추출",
+    "값 추출",
+    "문자 추출",
+    "정보 추출",
+    "표 추출",
+    "추출한 필드",
+    "추출된 필드"
+  ],
+  "rules": [
+    {
+      "pattern": "저장한 보기|새 보기|보기 이름|보기를 저장|보기 목록|저장된 보기",
+      "prefer": "뷰",
+      "level": "fail"
+    },
+    {
+      "pattern": "누름틀|자리표시자",
+      "prefer": "필드",
+      "level": "fail"
+    },
+    {
+      "pattern": "반출",
+      "prefer": "내보내기",
+      "level": "fail"
+    },
+    {
+      "pattern": "표본",
+      "prefer": "샘플",
+      "level": "fail"
+    },
+    {
+      "pattern": "정기 발송",
+      "prefer": "예약 발송",
+      "level": "fail"
+    },
+    {
+      "pattern": "끌어놓기|끌어 놓기",
+      "prefer": "드래그 앤 드롭",
+      "level": "warn"
+    },
+    {
+      "pattern": "머리글",
+      "prefer": "헤더",
+      "level": "fail"
+    },
+    {
+      "pattern": "단추",
+      "prefer": "버튼",
+      "level": "fail"
+    },
+    {
+      "pattern": "도구 막대",
+      "prefer": "툴바",
+      "level": "fail"
+    },
+    {
+      "pattern": "사용 시작|사용 중지",
+      "prefer": "게시 · 게시 중지",
+      "level": "warn"
+    },
+    {
+      "pattern": "오류 · 살펴볼 곳|살펴볼 곳",
+      "prefer": "고칠 곳 · 확인할 것",
+      "level": "warn"
+    }
+  ]
+}

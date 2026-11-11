@@ -1,0 +1,56 @@
+# 용어 사전 — 정본(템플릿). 이 파일만 고치고 생성물 · 검사는 이 파일을 읽는다.
+#
+# 항목 필드
+#   id          영문 소문자 · 하이픈. 한 번 쓴 id 는 다른 뜻으로 다시 쓰지 않는다.
+#   use         쓰는 말.
+#   avoid       쓰지 않는 말 목록. 글자 그대로 찾는다. `re:` 로 시작하면 정규식(JS, u 플래그).
+#   exceptions  avoid 를 품고 있어도 허용하는 말(복합어 · 다른 뜻). 먼저 가린 뒤 avoid 를 찾는다. `re:` 가능.
+#   meaning     뜻과 적용 범위(한두 문장).
+#   code        코드 식별자 · 영문(있으면).
+#   scope       ui · manual · docs · all (쉼표로 여럿). ui 는 화면 · 서버 오류 문구 · 도구 설명을 함께 뜻한다.
+#   decided     결정일 · 근거(결정자 지시 요약).
+#   status      확정 · 검토. 검토 항목은 검사에서 경고로만 센다.
+#   level       (선택) 화면 스캔 판정 단계 fail · warn. 생략하면 확정 = fail, 검토 = warn.
+#   aliases     (선택) 같은 개념의 허용 표기(미등록 판정에서 등록어로 본다).
+#
+# 형식 제약(작은 파서가 읽는다): 블록 리스트만 쓰고([a, b] 흐름 표기 금지), 주석은 줄 전체로만 단다.
+
+version: 1
+terms:
+  - id: button
+    use: 버튼
+    avoid:
+      - 단추
+    meaning: 눌러서 동작을 실행하는 화면 요소.
+    code: button
+    scope: all
+    decided: YYYY-MM-DD 결정자 — 업계 용어로 통일.
+    status: 확정
+
+  - id: view
+    use: 뷰
+    avoid:
+      - 저장된 보기
+      - 보기 목록
+    exceptions:
+      - 미리보기
+      - 모두 보기
+    meaning: 저장한 분석 구성. 동사 「보기」(미리보기 · 모두 보기)는 그대로 둔다.
+    code: view
+    scope: all
+    decided: YYYY-MM-DD 결정자 — 저장 개체 이름은 뷰.
+    status: 확정
+
+  - id: page
+    use: 페이지
+    avoid:
+      - 쪽 번호
+      - "re:(?<![가-힣])[0-9]+쪽"
+    exceptions:
+      - 오른쪽
+      - 왼쪽
+    meaning: 문서의 한 장. 방향의 쪽은 그대로 둔다.
+    code: page
+    scope: all
+    decided: YYYY-MM-DD 결정자.
+    status: 검토

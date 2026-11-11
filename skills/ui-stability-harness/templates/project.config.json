@@ -1,0 +1,27 @@
+{
+  "note": "프로젝트 어댑터 설정 — 범용 판정 코드가 읽는 프로젝트 고유 값(예시). 판정 코드에 testid · 클래스 · 경로 · 문구를 하드코딩하지 않는다.",
+  "termsFile": "docs/glossary/generated/ui-terms.json",
+  "errorBoundarySelectors": [
+    "[data-testid*=\"error-boundary\"]"
+  ],
+  "idPrefixes": [
+    "proj",
+    "item",
+    "user"
+  ],
+  "popoverSelectors": [
+    ".popover-panel"
+  ],
+  "modalOverlaySelectors": [
+    ".modal-overlay"
+  ],
+  "tooltipSelectors": [
+    ".tooltip"
+  ],
+  "choiceGroupSelectors": [
+    ".segmented"
+  ],
+  "textSkipSelectors": [
+    "#glossary-table"
+  ]
+}
