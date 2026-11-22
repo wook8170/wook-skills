@@ -17,7 +17,7 @@
 - 원래 함수를 문장 순서대로 잘라 `createX` · `partN` · `helpers2` 같은 조각을 만들지 않는다.
 - 조각들이 값 수십 개를 담은 공용 묶음(`ctx` · `deps` · `c`)을 주고받게 하지 않는다.
 - 나눈 단위는 필요한 입력만 받고 자기 결과만 돌려준다.
-  - 매개변수 · 입력 객체의 칸은 **7개 이하**로 둔다.
+  - 매개변수 · 입력 객체의 칸은 **7개 이하**로 둔다. 화면 컴포넌트의 props 는 **12개 이하**로 둔다. 화면 컴포넌트는 표시 옵션 · 이벤트 props 가 함께 붙기 때문이다.
   - 넘으면 경계를 잘못 잡은 것이다. 묶음을 다시 나눈다.
 - 이름은 하는 일을 말한다. 예: `useTableView` · `planExport`. 코드가 있던 위치를 따른 이름(`surfaceState` · `part2`)은 쓰지 않는다.
 
@@ -183,6 +183,7 @@ export function createReportPart3(ctx: ReportCtx) { /* 내보내기 뒷부분 + 
 |---|---|
 | 매개변수가 7개를 넘는 함수 | ESLint `max-params: ["error", 7]`. 위반이 있으면 목록을 json 으로 뽑아 기준선과 견준다 |
 | 칸이 7개를 넘는 입력 객체 하나를 받는 함수 | 기본 규칙이 없으므로 직접 만든 지표를 쓴다. TypeScript 컴파일러 API 로 객체 구조분해 매개변수 · 매개변수 타입의 프로퍼티 수를 센다 |
+| props 가 12개를 넘는 화면 컴포넌트 | 위와 같은 직접 만든 지표로 React 함수 컴포넌트의 props 타입 · Vue `defineProps` 의 칸을 센다. 기준은 일반 함수(7)와 따로 둔다 |
 | 한 글자 · 금지 약어 식별자 | ESLint `id-length: ["error", { min: 2, exceptions: ["i", "j"] }]` 와 `id-denylist: ["error", "tmp", "cfg2", "src"]` |
 | 주석 안의 이력 표식(버전 번호 · 티켓 · 작업 번호 · 설계 문서 줄 번호) | ESLint `no-warning-comments` 로 `TODO` 류를 막고, 이력 표식은 주석 본문에 정규식(`\b\d+\.\d+\.\d+\b —` · `\b[A-Z]{1,3}-?\d+\b:` · `L\d{2,}`)을 거는 직접 만든 검사 |
 | 새 파일의 머리 주석 누락 | 직접 만든 검사. `git diff --diff-filter=A` 로 새 파일을 모아 첫 줄이 주석인지 확인한다. 또는 `eslint-plugin-header` 의 `header/header` |
