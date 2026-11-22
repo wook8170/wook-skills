@@ -4,7 +4,7 @@ English | [한국어](README.ko.md)
 
 Ten Claude Code skills for day-to-day engineering work, packaged as one plugin. Most skill bodies are written in Korean.
 
-- Version: **0.1.0**
+- Version: **0.1.1**
 - License: MIT · Author: 장욱 (Wook Jang)
 
 ## Skills
@@ -16,7 +16,7 @@ Claude loads a skill on its own when your request matches the skill's descriptio
 | `handoff` | Commits work in progress, moves finished history to `docs/progress-archive/`, rewrites `progress.md` as a short current-state file with exact resume commands, then stops | 「핸드오프」, "handoff", or `/wook-skills:handoff` |
 | `pickup` | Reads the latest `progress.md` handoff, checks git, worktree and server state, flags stale items, and summarizes before doing anything | 「이어받아」, "pickup", or `/wook-skills:pickup` |
 | `work-status` | Read-only status view: main and tags, gate stamp, worktrees, unmerged branches, open PRs, running servers, heavy background jobs | 「현황」, "status", or `/wook-skills:work-status` |
-| `code-structure-guard` | Size and complexity limits for new code, layer direction, no new cycles or empty `catch`, and how to set up a ratchet check | While writing code, or `/wook-skills:code-structure-guard` |
+| `code-structure-guard` | Size and complexity limits for new code, readability rules (separate decision from action, split by feature, names and comments, a first-time-reader check), layer direction, no new cycles or empty `catch`, and how to set up a ratchet check | While writing code, or `/wook-skills:code-structure-guard` |
 | `readable-korean` | Finds and fixes four patterns that make Korean text hard to read | 「문장 다듬어」, "proofread", or `/wook-skills:readable-korean` |
 | `design-deliverables` | Builds and keeps current a set of design documents: generated chapters, requirement IDs, traceability, screen design specs | 「설계 산출물」, 「현행화」, or `/wook-skills:design-deliverables` |
 | `pdf-typeset` | Typesets Markdown or HTML into A4 PDF with table of contents, links and bookmarks, figure scaling, landscape pages, and diagrams | 「PDF 만들기」, "make a PDF", or `/wook-skills:pdf-typeset` |
