@@ -2,9 +2,9 @@
 
 [English](README.md) | 한국어
 
-개발 업무에 쓰는 Claude Code 스킬 10개를 플러그인 하나로 묶었다.
+개발 업무에 쓰는 Claude Code 스킬 11개를 플러그인 하나로 묶었다.
 
-- 버전: **0.1.1**
+- 버전: **0.1.2**
 - 사용권: MIT · 저자: 장욱 (Wook Jang)
 
 ## 스킬 목록
@@ -17,6 +17,7 @@
 | `pickup` | 최신 `progress.md` 핸드오프를 읽고 git · 워크트리 · 서버 상태를 확인한다. 낡은 항목을 표시하고, 요약한 뒤에 작업을 시작한다 | 「이어받아」, `/wook-skills:pickup` |
 | `work-status` | 현재 상태를 읽기 전용으로 보여 준다(main · 태그 · 게이트 표식 · 워크트리 · 병합 안 된 브랜치 · 열린 PR · 떠 있는 서버 · 무거운 작업) | 「현황」「지금 상태」, `/wook-skills:work-status` |
 | `code-structure-guard` | 새 코드의 크기 · 복잡도 상한, 사람이 읽기 쉬운 코드 기준(판정 · 실행 분리, 기능 단위 나누기, 이름 · 주석, 처음 보는 사람 기준 점검), 계층 방향을 지키게 한다. 순환 의존과 빈 `catch` 를 막고, 래칫 검사를 세우는 방법도 담았다 | 코드 작성 · 리팩토링 요청, `/wook-skills:code-structure-guard` |
+| `project-wiki` | 저장소의 개발 문서 · 설계 문서 · 결정 기록 · 운영 절차를 절 단위 위키 색인으로 만들고(`init` → `build`), 문서 질문에서 그 색인을 먼저 검색한다(`search` → `read` → `backlinks`). 근거가 바뀐 문서에는 낡음 표시를 붙인다. 의존성 없는 색인기(`bin/wiki-index.mjs`)와 MCP 서버를 함께 담았다 | 「위키 만들어」「설계 문서에 뭐라고 돼 있어」「왜 이렇게 했지」「운영 절차」, `/wook-skills:project-wiki` |
 | `readable-korean` | 한국어 글을 읽기 어렵게 만드는 네 가지 형태를 찾아 고친다 | 「문장 다듬어」「교정」, `/wook-skills:readable-korean` |
 | `design-deliverables` | 설계 산출물 세트를 세우고 현행화한다(생성 장 · 요구사항 ID · 추적 · 화면 설계서) | 「설계 산출물」「현행화」, `/wook-skills:design-deliverables` |
 | `pdf-typeset` | Markdown · HTML 원고를 A4 PDF 로 조판한다(차례 · 링크 · 책갈피 · 그림 배율 · 가로 쪽 · 다이어그램) | 「PDF 만들기」「조판」, `/wook-skills:pdf-typeset` |
@@ -33,6 +34,23 @@ claude plugin install wook-skills@wook8170-plugins
 
 같은 이름의 스킬이 `~/.claude/skills/` 에 있으면 개인 사본을 먼저 지우거나 이름을 바꾼다. 그대로 두면 두 벌이 함께 불려 온다.
 
+## project-wiki 쓰는 법
+
+색인기는 `skills/project-wiki/bin/wiki-index.mjs` 한 파일이다. Node 22 이상만 있으면 되고 설치할 의존성이 없다. 저장소 안 어디서든 부른다.
+
+```bash
+node <스킬 폴더>/bin/wiki-index.mjs init     # 문서 폴더를 찾아 .wiki/config.json 을 만들고 .gitignore 에 .wiki/index/ 를 더한다
+node <스킬 폴더>/bin/wiki-index.mjs build    # 색인을 .wiki/index/ 에 만든다(커밋하지 않는다)
+node <스킬 폴더>/bin/wiki-index.mjs search "캐시 결정"
+node <스킬 폴더>/bin/wiki-index.mjs read docs-adr:0001-cache#결정
+node <스킬 폴더>/bin/wiki-index.mjs backlinks docs-adr:0001-cache
+node <스킬 폴더>/bin/wiki-index.mjs stale    # 현행 결정 · 정책 문서의 근거가 바뀌었으면 종료 1
+```
+
+`search` · `read` · `backlinks` 는 지난 빌드 뒤 원천이 바뀌었으면 바뀐 문서만 다시 나눈 뒤 답한다. 비밀값이 든 문서는 색인에서 빼고(`security.onSecret: "quarantine"`), 경로만 `.wiki/index/quarantine.txt` 에 남긴다. MCP 도구(`wiki_search` · `wiki_read` · `wiki_backlinks`)로 쓰려면 `.mcp.json` 에 `serve-mcp --root ${CLAUDE_PROJECT_DIR}` 를 등록한다. 자세한 방법은 `skills/project-wiki/SKILL.md`, 설정 항목은 `skills/project-wiki/reference/config.md` 에 있다.
+
+TypeScript 원본은 `skills/project-wiki/src/` 에 있다. 고친 뒤 `node skills/project-wiki/scripts/build-wiki-index.mjs` 로 다시 묶고, `node --test skills/project-wiki/test/*.test.ts` 로 시험한다.
+
 ## 프로젝트 설정 파일
 
 게이트 표식 이름, 구조 검사 명령, 산출물 세트의 번호 체계, PDF 빌더 지도처럼 프로젝트마다 다른 값은 스킬 이름으로 된 파일에 적는다.
@@ -47,6 +65,7 @@ claude plugin install wook-skills@wook8170-plugins
 |---|---|
 | `work-status` | `gate-stamp`(git 공용 디렉터리 안의 표식 파일 이름, 기본 `gate-pass`)와 `ports`(확인할 서버 포트, 기본 `3000 4173 5173 5174 8000 8080`). 스크립트는 ``- `gate-stamp`: `이름` `` 형식의 줄을 읽는다 |
 | `code-structure-guard` | 래칫 명령 · 검사 범위 · 예외 폴더 · 기준선 수치 · 로거 위치 |
+| `project-wiki` | 위키 위치 · 명령 · MCP 서버 이름 · 원천 · 등급 · 영역 옵션 · 낡음 표시 처리법. `init` 이 만들어 준다. 자기 색인기를 가진 저장소는 그 명령을 적는다 |
 | `design-deliverables` | 산출물 폴더 위치 · 권 번호 체계 · 생성 명령 · 알려진 함정 |
 | `pdf-typeset` | 빌더 지도(빌더 · 입력 · 출력 · 굽는 방법) · 명령 · 검사 · 보관 규칙 · 표 가로 쪽 지원 여부 |
 | `ui-stability-harness` | 어댑터 값(선택자 · 저장소 키 · ID 접두)과 그 프로젝트의 적용 사례 |
@@ -58,6 +77,8 @@ claude plugin install wook-skills@wook8170-plugins
 ```
 .claude-plugin/plugin.json
 skills/<스킬 이름>/SKILL.md      # 필요한 스킬은 reference/ · references/ · templates/ · scripts/ 를 함께 둔다
+skills/project-wiki/bin/         # 묶은 색인기(src/ 에서 만든 파일이라 손으로 고치지 않는다)
+skills/project-wiki/src/ · test/ # 색인기 원본과 시험
 ```
 
 스크립트 경로는 스킬 폴더 기준이다. Claude Code 는 스킬을 불러올 때 이 폴더를 기본 디렉터리(Base directory)로 보여 준다.

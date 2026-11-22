@@ -1,8 +1,8 @@
 {
   "name": "wook-skills",
   "displayName": "Wook Skills",
-  "version": "0.1.1",
-  "description": "Ten Claude Code skills for day-to-day engineering work: session handoff and pickup, work status, code structure limits, readable Korean writing, design deliverables, PDF typesetting, glossary checks, 2x retina capture, and a UI stability harness. Project-specific values come from .claude/skills-config/<skill>.md.",
+  "version": "0.1.2",
+  "description": "Eleven Claude Code skills for day-to-day engineering work: session handoff and pickup, work status, a project wiki (index and search a repo's docs, with a bundled zero-dependency indexer), code structure limits, readable Korean writing, design deliverables, PDF typesetting, glossary checks, 2x retina capture, and a UI stability harness. Project-specific values come from .claude/skills-config/<skill>.md.",
   "author": {
     "name": "장욱 (Wook Jang)",
     "email": "wook81701@gmail.com",
@@ -11,5 +11,5 @@
   "homepage": "https://github.com/wook8170/wook-skills",
   "repository": "https://github.com/wook8170/wook-skills",
   "license": "MIT",
-  "keywords": ["skills", "handoff", "code-structure", "korean-writing", "pdf", "glossary", "ui-testing"]
+  "keywords": ["skills", "handoff", "wiki", "docs-search", "mcp", "code-structure", "korean-writing", "pdf", "glossary", "ui-testing"]
 }
