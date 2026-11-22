@@ -1,7 +1,7 @@
 {
   "name": "wook-skills",
   "displayName": "Wook Skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ten Claude Code skills for day-to-day engineering work: session handoff and pickup, work status, code structure limits, readable Korean writing, design deliverables, PDF typesetting, glossary checks, 2x retina capture, and a UI stability harness. Project-specific values come from .claude/skills-config/<skill>.md.",
   "author": {
     "name": "장욱 (Wook Jang)",

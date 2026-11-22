@@ -4,7 +4,7 @@
 
 개발 업무에 쓰는 Claude Code 스킬 10개를 플러그인 하나로 묶었다.
 
-- 버전: **0.1.0**
+- 버전: **0.1.1**
 - 사용권: MIT · 저자: 장욱 (Wook Jang)
 
 ## 스킬 목록
@@ -16,7 +16,7 @@
 | `handoff` | 작업 중 변경을 커밋하고, 끝난 이력을 `docs/progress-archive/` 로 옮긴다. 그다음 `progress.md` 를 현재 상태와 재개 명령만 담은 짧은 파일로 다시 쓰고 멈춘다 | 「핸드오프」「멈춰」, `/wook-skills:handoff` |
 | `pickup` | 최신 `progress.md` 핸드오프를 읽고 git · 워크트리 · 서버 상태를 확인한다. 낡은 항목을 표시하고, 요약한 뒤에 작업을 시작한다 | 「이어받아」, `/wook-skills:pickup` |
 | `work-status` | 현재 상태를 읽기 전용으로 보여 준다(main · 태그 · 게이트 표식 · 워크트리 · 병합 안 된 브랜치 · 열린 PR · 떠 있는 서버 · 무거운 작업) | 「현황」「지금 상태」, `/wook-skills:work-status` |
-| `code-structure-guard` | 새 코드의 크기 · 복잡도 상한과 계층 방향을 지키게 한다. 순환 의존과 빈 `catch` 를 막고, 래칫 검사를 세우는 방법도 담았다 | 코드 작성 · 리팩토링 요청, `/wook-skills:code-structure-guard` |
+| `code-structure-guard` | 새 코드의 크기 · 복잡도 상한, 사람이 읽기 쉬운 코드 기준(판정 · 실행 분리, 기능 단위 나누기, 이름 · 주석, 처음 보는 사람 기준 점검), 계층 방향을 지키게 한다. 순환 의존과 빈 `catch` 를 막고, 래칫 검사를 세우는 방법도 담았다 | 코드 작성 · 리팩토링 요청, `/wook-skills:code-structure-guard` |
 | `readable-korean` | 한국어 글을 읽기 어렵게 만드는 네 가지 형태를 찾아 고친다 | 「문장 다듬어」「교정」, `/wook-skills:readable-korean` |
 | `design-deliverables` | 설계 산출물 세트를 세우고 현행화한다(생성 장 · 요구사항 ID · 추적 · 화면 설계서) | 「설계 산출물」「현행화」, `/wook-skills:design-deliverables` |
 | `pdf-typeset` | Markdown · HTML 원고를 A4 PDF 로 조판한다(차례 · 링크 · 책갈피 · 그림 배율 · 가로 쪽 · 다이어그램) | 「PDF 만들기」「조판」, `/wook-skills:pdf-typeset` |
