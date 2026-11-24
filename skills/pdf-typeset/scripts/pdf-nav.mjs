@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// typeset-kit(github:wook8170/typeset-kit)으로 대체됐다. 다음 버전에서 지운다.
 // PDF 탐색 정보 후처리 — 열 때 책갈피 창(/PageMode /UseOutlines) · 쪽 번호 표기(/PageLabels) · (선택) 책갈피 트리 · 차례 링크.
 // 의존 = pdf-lib 하나(작업 중인 프로젝트의 node_modules 에서 찾는다. 없으면 `npm i -D pdf-lib@1.17.1`).
 //
