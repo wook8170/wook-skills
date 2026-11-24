@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// typeset-kit(github:wook8170/typeset-kit)으로 대체됐다. 다음 버전에서 지운다.
 // HTML → PDF(헤드리스 Chrome CDP Page.printToPDF). 의존 없음(Node 22 이상의 내장 WebSocket · fetch).
 //
 //   node print-pdf.mjs <입력.html> <출력.pdf> [--wait-expr "window.__paged === true"] [--timeout 120]

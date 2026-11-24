@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# typeset-kit(github:wook8170/typeset-kit)으로 대체됐다. 다음 버전에서 지운다.
 """완성 PDF 점검 — 쪽 수 · 가로 쪽 수 · 책갈피(단계별) · 내부 링크 수 · 책갈피 창 · 쪽 번호 표기 · 글꼴(Type 3 여부) · 크기.
 
   python3 check-pdf.py <pdf>... [--min-outline 1] [--min-links 1]
